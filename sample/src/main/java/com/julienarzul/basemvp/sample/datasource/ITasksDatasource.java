@@ -12,11 +12,4 @@ import java.util.List;
 public interface ITasksDatasource {
 
     void getTaskList(DataCallback<List<Task>> callback);
-
-    interface DataCallback<T> {
-
-        void onDataLoaded(T data);
-
-        void onDataNotAvailable();
-    }
 }

@@ -15,6 +15,8 @@ interface TaskListContract {
     interface View extends MvpContract.View {
 
         void setTaskList(List<Task> data);
+
+        void displayErrorView();
     }
 
     interface Presenter extends MvpContract.Presenter<View> {

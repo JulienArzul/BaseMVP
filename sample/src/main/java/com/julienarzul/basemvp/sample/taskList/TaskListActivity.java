@@ -44,4 +44,9 @@ public class TaskListActivity extends MvpActivity<TaskListContract.Presenter> im
     public void setTaskList(List<Task> data) {
         this.adapter.setTaskList(data);
     }
+
+    @Override
+    public void displayErrorView() {
+        // TODO: Add error view in the screen
+    }
 }

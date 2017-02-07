@@ -1,7 +1,9 @@
 package com.julienarzul.basemvp.sample.taskList;
 
 import com.julienarzul.basemvp.BasePresenter;
+import com.julienarzul.basemvp.sample.datasource.DataCallback;
 import com.julienarzul.basemvp.sample.datasource.ITasksDatasource;
+import com.julienarzul.basemvp.sample.model.DatasourceError;
 import com.julienarzul.basemvp.sample.model.Task;
 
 import java.lang.ref.WeakReference;
@@ -25,19 +27,19 @@ class TaskListPresenter extends BasePresenter<TaskListContract.View> implements 
         this.tasksDatasource.getTaskList(new TaskListDataCallback(this));
     }
 
-    private void onTaskListLoaded(List<Task> taskList) {
+    private void onGetTaskListSucceeded(List<Task> taskList) {
         if (this.view != null) {
             this.view.setTaskList(taskList);
         }
     }
 
-    private void onTaskListEmpty() {
+    private void onGetTaskListFailed() {
         if (this.view != null) {
-            //TODO: Handle empty state
+            this.view.displayErrorView();
         }
     }
 
-    private static class TaskListDataCallback implements ITasksDatasource.DataCallback<List<Task>> {
+    private static class TaskListDataCallback implements DataCallback<List<Task>> {
 
         private final WeakReference<TaskListPresenter> presenterWeak;
 
@@ -50,16 +52,16 @@ class TaskListPresenter extends BasePresenter<TaskListContract.View> implements 
             TaskListPresenter presenter = this.presenterWeak.get();
 
             if (presenter != null) {
-                presenter.onTaskListLoaded(data);
+                presenter.onGetTaskListSucceeded(data);
             }
         }
 
         @Override
-        public void onDataNotAvailable() {
+        public void onDataError(DatasourceError error) {
             TaskListPresenter presenter = this.presenterWeak.get();
 
             if (presenter != null) {
-                presenter.onTaskListEmpty();
+                presenter.onGetTaskListFailed();
             }
         }
 
