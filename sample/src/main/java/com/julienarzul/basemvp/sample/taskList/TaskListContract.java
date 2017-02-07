@@ -6,8 +6,7 @@ import com.julienarzul.basemvp.sample.model.Task;
 import java.util.List;
 
 /**
- * Created by Julien Arzul on 14/10/2016.
- * Copyright @ 2appaZ 2016
+ * Copyright @ Julien Arzul 2016
  */
 
 interface TaskListContract {

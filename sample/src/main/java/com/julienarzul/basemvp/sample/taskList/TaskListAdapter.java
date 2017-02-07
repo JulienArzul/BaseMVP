@@ -9,8 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Julien Arzul on 14/10/2016.
- * Copyright @ 2appaZ 2016
+ * Copyright @ Julien Arzul 2016
  */
 
 class TaskListAdapter extends RecyclerView.Adapter<TaskListViewHolder> {

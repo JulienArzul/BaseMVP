@@ -10,8 +10,7 @@ import java.lang.ref.WeakReference;
 import java.util.List;
 
 /**
- * Created by Julien Arzul on 14/10/2016.
- * Copyright @ 2appaZ 2016
+ * Copyright @ Julien Arzul 2016
  */
 
 class TaskListPresenter extends BasePresenter<TaskListContract.View> implements TaskListContract.Presenter {
