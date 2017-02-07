@@ -36,6 +36,11 @@ public class TaskListActivity extends MvpActivity<TaskListContract.Presenter> im
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getApplicationContext(), LinearLayoutManager.VERTICAL, false));
         this.adapter = new TaskListAdapter(this.presenter);
         recyclerView.setAdapter(this.adapter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
 
         this.presenter.loadData();
     }
