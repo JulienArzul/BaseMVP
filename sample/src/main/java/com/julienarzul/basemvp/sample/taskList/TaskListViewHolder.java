@@ -15,17 +15,20 @@ import com.julienarzul.basemvp.sample.model.Task;
  * Copyright @ 2appaZ 2016
  */
 
-class TaskListViewHolder extends RecyclerView.ViewHolder {
+class TaskListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     private final TaskListContract.Presenter presenter;
 
     private TextView textView;
+
+    private Task currentItem;
 
     private TaskListViewHolder(View itemView, TaskListContract.Presenter presenter) {
         super(itemView);
 
         this.presenter = presenter;
 
+        itemView.setOnClickListener(this);
         textView = (TextView) itemView.findViewById(R.id.task_item_textview);
     }
 
@@ -36,6 +39,17 @@ class TaskListViewHolder extends RecyclerView.ViewHolder {
     }
 
     void update(Task item) {
+        this.currentItem = item;
+
         this.textView.setText(item.taskDescription());
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (this.itemView.equals(v)) {
+            if (this.currentItem != null) {
+                this.presenter.onTaskItemClicked(this.currentItem);
+            }
+        }
     }
 }

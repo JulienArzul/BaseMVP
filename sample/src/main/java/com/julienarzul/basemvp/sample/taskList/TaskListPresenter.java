@@ -27,6 +27,11 @@ class TaskListPresenter extends BasePresenter<TaskListContract.View> implements 
         this.tasksDatasource.getTaskList(new TaskListDataCallback(this));
     }
 
+    @Override
+    public void onTaskItemClicked(Task clickedTask) {
+        this.view.launchTaskDetailsScreen(clickedTask);
+    }
+
     private void onGetTaskListSucceeded(List<Task> taskList) {
         if (this.view != null) {
             this.view.setTaskList(taskList);

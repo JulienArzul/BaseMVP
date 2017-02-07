@@ -49,4 +49,9 @@ public class TaskListActivity extends MvpActivity<TaskListContract.Presenter> im
     public void displayErrorView() {
         // TODO: Add error view in the screen
     }
+
+    @Override
+    public void launchTaskDetailsScreen(Task task) {
+        // TODO: Open task details
+    }
 }

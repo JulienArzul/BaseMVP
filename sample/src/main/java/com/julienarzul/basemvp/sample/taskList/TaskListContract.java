@@ -17,10 +17,14 @@ interface TaskListContract {
         void setTaskList(List<Task> data);
 
         void displayErrorView();
+
+        void launchTaskDetailsScreen(Task task);
     }
 
     interface Presenter extends MvpContract.Presenter<View> {
 
         void loadData();
+
+        void onTaskItemClicked(Task clickedTask);
     }
 }
