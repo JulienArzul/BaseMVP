@@ -10,10 +10,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="16dp"
+        android:layout_margin="16dp"
         android:gravity="center_horizontal"
         android:textSize="18sp"
         android:textStyle="bold"
         tools:text="Ma tache"/>
+
+    <Button
+        android:id="@+id/task_details_delete_task_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="16dp"
+        android:text="@string/task_details_delete_button_text"/>
 
 </LinearLayout>

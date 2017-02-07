@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Base MVP</string>
+
+    <string name="task_details_delete_button_text">Delete task</string>
 </resources>
