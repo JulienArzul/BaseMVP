@@ -9,6 +9,7 @@ import com.julienarzul.basemvp.MvpActivity;
 import com.julienarzul.basemvp.sample.R;
 import com.julienarzul.basemvp.sample.datasource.DatasourceFactory;
 import com.julienarzul.basemvp.sample.model.Task;
+import com.julienarzul.basemvp.sample.taskDetails.TaskDetailsActivity;
 
 import java.util.List;
 
@@ -51,6 +52,6 @@ public class TaskListActivity extends MvpActivity<TaskListContract.Presenter> im
 
     @Override
     public void launchTaskDetailsScreen(Task task) {
-        // TODO: Open task details
+        this.startActivity(TaskDetailsActivity.getStartingIntent(this.getApplicationContext(), task));
     }
 }
