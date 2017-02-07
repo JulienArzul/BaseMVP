@@ -6,8 +6,7 @@ import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 
 /**
- * Created by Julien Arzul on 14/10/2016.
- * Copyright @ 2AppaZ 2016
+ * Copyright @ Julien Arzul 2016
  */
 
 public abstract class MvpDialogFragment<T extends MvpContract.Presenter> extends DialogFragment implements MvpContract.View {

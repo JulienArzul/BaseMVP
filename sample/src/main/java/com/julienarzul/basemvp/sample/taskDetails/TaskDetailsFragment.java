@@ -18,8 +18,7 @@ import com.julienarzul.basemvp.sample.datasource.DatasourceFactory;
 import com.julienarzul.basemvp.sample.model.Task;
 
 /**
- * Created by Julien Arzul on 7/2/17.
- * Copyright @ ZenPark 2017
+ * Copyright @ Julien Arzul 2017
  */
 
 public class TaskDetailsFragment extends MvpFragment<TaskDetailsContract.Presenter> implements TaskDetailsContract.View {

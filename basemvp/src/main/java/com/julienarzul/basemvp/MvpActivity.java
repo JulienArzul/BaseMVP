@@ -5,8 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 /**
- * Created by Julien Arzul on 14/10/2016.
- * Copyright @ 2AppaZ 2016
+ * Copyright @ Julien Arzul 2016
  */
 
 public abstract class MvpActivity<T extends MvpContract.Presenter> extends AppCompatActivity implements MvpContract.View {
