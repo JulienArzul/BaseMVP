@@ -12,6 +12,12 @@ interface TaskDetailsContract {
     interface View extends MvpContract.View {
 
         void setTaskDescriptionText(String taskDescription);
+
+        void displayDeleteConfirmationToast();
+
+        void displayErrorDialog();
+
+        void finishScreen();
     }
 
     interface Presenter extends MvpContract.Presenter<View> {

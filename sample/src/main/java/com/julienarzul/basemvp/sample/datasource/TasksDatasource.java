@@ -1,5 +1,6 @@
 package com.julienarzul.basemvp.sample.datasource;
 
+import com.julienarzul.basemvp.sample.model.DatasourceError;
 import com.julienarzul.basemvp.sample.model.Task;
 
 import java.util.ArrayList;
@@ -13,7 +14,10 @@ class TasksDatasource implements ITasksDatasource {
 
     private static volatile TasksDatasource instance;
 
+    private final List<Task> taskList;
+
     private TasksDatasource() {
+        this.taskList = new ArrayList<>(createTaskList());
     }
 
     static TasksDatasource getInstance() {
@@ -40,6 +44,17 @@ class TasksDatasource implements ITasksDatasource {
 
     @Override
     public void getTaskList(DataCallback<List<Task>> callback) {
-        callback.onDataLoaded(createTaskList());
+        callback.onDataLoaded(this.taskList);
+    }
+
+    @Override
+    public void deleteTask(Task task, DataCallback<Void> callback) {
+        boolean removed = this.taskList.remove(task);
+
+        if (removed) {
+            callback.onDataLoaded(null);
+        } else {
+            callback.onDataError(new DatasourceError());
+        }
     }
 }

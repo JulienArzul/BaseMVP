@@ -47,4 +47,23 @@ public class Task implements Parcelable {
         dest.writeInt(this.taskId);
         dest.writeString(this.taskDescription);
     }
+
+    @Override
+    public int hashCode() {
+        int result = taskId;
+        result = 31 * result + (taskDescription != null ? taskDescription.hashCode() : 0);
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Task task = (Task) o;
+
+        if (taskId != task.taskId) return false;
+        return taskDescription != null ? taskDescription.equals(task.taskDescription) : task.taskDescription == null;
+
+    }
 }
