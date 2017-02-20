@@ -4,11 +4,13 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.julienarzul.basemvp.MvpActivity;
 import com.julienarzul.basemvp.sample.R;
 import com.julienarzul.basemvp.sample.datasource.DatasourceFactory;
 import com.julienarzul.basemvp.sample.model.Task;
+import com.julienarzul.basemvp.sample.ui.addEditTask.AddEditTaskActivity;
 import com.julienarzul.basemvp.sample.ui.taskDetails.TaskDetailsActivity;
 
 import java.util.List;
@@ -36,6 +38,13 @@ public class TaskListActivity extends MvpActivity<TaskListContract.Presenter> im
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getApplicationContext(), LinearLayoutManager.VERTICAL, false));
         this.adapter = new TaskListAdapter(this.presenter);
         recyclerView.setAdapter(this.adapter);
+
+        this.findViewById(R.id.task_list_add_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onAddTaskButtonClicked();
+            }
+        });
     }
 
     @Override
@@ -58,5 +67,14 @@ public class TaskListActivity extends MvpActivity<TaskListContract.Presenter> im
     @Override
     public void launchTaskDetailsScreen(Task task) {
         this.startActivity(TaskDetailsActivity.getStartingIntent(this.getApplicationContext(), task));
+    }
+
+    @Override
+    public void launchAddTaskScreen() {
+        this.startActivity(AddEditTaskActivity.getStartingIntent(this.getApplicationContext()));
+    }
+
+    private void onAddTaskButtonClicked() {
+        this.presenter.onAddTaskButtonClicked();
     }
 }

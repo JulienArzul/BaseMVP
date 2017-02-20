@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="spacing_medium">16dp</dimen>
+
+    <dimen name="default_horizontal_margin">@dimen/spacing_medium</dimen>
+    <dimen name="default_vertical_margin">@dimen/spacing_medium</dimen>
+
+</resources>

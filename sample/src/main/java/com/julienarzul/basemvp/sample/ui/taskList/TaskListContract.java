@@ -18,6 +18,8 @@ interface TaskListContract {
         void displayErrorView();
 
         void launchTaskDetailsScreen(Task task);
+
+        void launchAddTaskScreen();
     }
 
     interface Presenter extends MvpContract.Presenter<View> {
@@ -25,5 +27,7 @@ interface TaskListContract {
         void loadData();
 
         void onTaskItemClicked(Task clickedTask);
+
+        void onAddTaskButtonClicked();
     }
 }

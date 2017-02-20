@@ -31,6 +31,11 @@ class TaskListPresenter extends BasePresenter<TaskListContract.View> implements 
         this.view.launchTaskDetailsScreen(clickedTask);
     }
 
+    @Override
+    public void onAddTaskButtonClicked() {
+        this.view.launchAddTaskScreen();
+    }
+
     private void onGetTaskListSucceeded(List<Task> taskList) {
         if (this.view != null) {
             this.view.setTaskList(taskList);
