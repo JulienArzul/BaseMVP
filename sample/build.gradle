@@ -21,11 +21,20 @@ android {
     }
 }
 
+repositories {
+    // Repository for AutoParcel
+    maven { url "https://clojars.org/repo/" }
+}
+
 dependencies {
     compile project(':basemvp')
 
     compile "com.android.support:appcompat-v7:$rootProject.ext.supportVersion"
     compile "com.android.support:design:$rootProject.ext.supportVersion"
+
+    provided "com.google.auto.value:auto-value:$rootProject.ext.autoValueVersion"
+    annotationProcessor "com.google.auto.value:auto-value:$rootProject.ext.autoValueVersion"
+    annotationProcessor "frankiesardo:auto-parcel:$rootProject.ext.autoParcelVersion"
 
     compile "com.jakewharton:butterknife:$rootProject.ext.butterknifeVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.ext.butterknifeVersion"

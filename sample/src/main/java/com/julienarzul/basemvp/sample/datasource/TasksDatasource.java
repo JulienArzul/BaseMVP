@@ -36,7 +36,7 @@ class TasksDatasource implements ITasksDatasource {
         List<Task> taskList = new ArrayList<>();
 
         for (int i = 0; i < 20; i++) {
-            taskList.add(new Task(i, "Task " + (i + 1)));
+            taskList.add(Task.create(i, "Task " + (i + 1)));
         }
 
         return taskList;
