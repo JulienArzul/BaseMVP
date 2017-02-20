@@ -22,7 +22,7 @@ ext {
     // Build tools
     compileSdkVersion = 25
     buildToolsVersion = "25.0.2"
-    minSdkVersion = 15
+    minSdkVersion = 17
     targetSdkVersion = 25
 
     // Google Versions
