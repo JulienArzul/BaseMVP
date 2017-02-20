@@ -10,6 +10,9 @@ import android.widget.TextView;
 import com.julienarzul.basemvp.sample.R;
 import com.julienarzul.basemvp.sample.model.Task;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * Copyright @ Julien Arzul 2016
  */
@@ -18,17 +21,19 @@ class TaskListViewHolder extends RecyclerView.ViewHolder implements View.OnClick
 
     private final TaskListContract.Presenter presenter;
 
-    private TextView textView;
+    @BindView(R.id.task_item_textview)
+    TextView textView;
 
     private Task currentItem;
 
     private TaskListViewHolder(View itemView, TaskListContract.Presenter presenter) {
         super(itemView);
 
+        ButterKnife.bind(this, itemView);
+
         this.presenter = presenter;
 
         itemView.setOnClickListener(this);
-        textView = (TextView) itemView.findViewById(R.id.task_item_textview);
     }
 
     static TaskListViewHolder newInstance(Context context, ViewGroup parent, TaskListContract.Presenter presenter) {

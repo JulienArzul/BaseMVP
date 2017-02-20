@@ -17,6 +17,11 @@ import com.julienarzul.basemvp.sample.R;
 import com.julienarzul.basemvp.sample.datasource.DatasourceFactory;
 import com.julienarzul.basemvp.sample.model.Task;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
+
 /**
  * Copyright @ Julien Arzul 2017
  */
@@ -24,7 +29,9 @@ import com.julienarzul.basemvp.sample.model.Task;
 public class TaskDetailsFragment extends MvpFragment<TaskDetailsContract.Presenter> implements TaskDetailsContract.View {
 
     private static final String TASK_BUNDLE_KEY = "com.julienarzul.basemvp.sample.ui.taskDetails.TaskDetailsFragment.task";
-    private TextView taskDescriptionTextView;
+    @BindView(R.id.task_details_task_description_textview)
+    TextView taskDescriptionTextView;
+    private Unbinder unbinder;
 
     public static TaskDetailsFragment newInstance(Task task) {
         Bundle args = new Bundle();
@@ -58,18 +65,22 @@ public class TaskDetailsFragment extends MvpFragment<TaskDetailsContract.Present
         this.presenter.setTask(task);
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+
+        if (this.unbinder != null) {
+            this.unbinder.unbind();
+            this.unbinder = null;
+        }
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_task_details, container, false);
 
-        this.taskDescriptionTextView = (TextView) view.findViewById(R.id.task_details_task_description_textview);
-        view.findViewById(R.id.task_details_delete_task_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                presenter.onDeleteButtonClicked();
-            }
-        });
+        this.unbinder = ButterKnife.bind(this, view);
 
         return view;
     }
@@ -93,6 +104,11 @@ public class TaskDetailsFragment extends MvpFragment<TaskDetailsContract.Present
     @Override
     public void finishScreen() {
         this.getActivity().finish();
+    }
+
+    @OnClick(R.id.task_details_delete_task_button)
+    void onDeleteButtonClicked() {
+        this.presenter.onDeleteButtonClicked();
     }
 
     public static class DeleteErrorDialogFragment extends DialogFragment {

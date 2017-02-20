@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
 import com.julienarzul.basemvp.MvpActivity;
 import com.julienarzul.basemvp.sample.R;
@@ -14,6 +13,9 @@ import com.julienarzul.basemvp.sample.ui.addEditTask.AddEditTaskActivity;
 import com.julienarzul.basemvp.sample.ui.taskDetails.TaskDetailsActivity;
 
 import java.util.List;
+
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Copyright @ Julien Arzul 2016
@@ -32,19 +34,14 @@ public class TaskListActivity extends MvpActivity<TaskListContract.Presenter> im
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_task_list);
+        this.setContentView(R.layout.activity_task_list);
+
+        ButterKnife.bind(this);
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getApplicationContext(), LinearLayoutManager.VERTICAL, false));
         this.adapter = new TaskListAdapter(this.presenter);
         recyclerView.setAdapter(this.adapter);
-
-        this.findViewById(R.id.task_list_add_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onAddTaskButtonClicked();
-            }
-        });
     }
 
     @Override
@@ -74,7 +71,8 @@ public class TaskListActivity extends MvpActivity<TaskListContract.Presenter> im
         this.startActivity(AddEditTaskActivity.getStartingIntent(this.getApplicationContext()));
     }
 
-    private void onAddTaskButtonClicked() {
+    @OnClick(R.id.task_list_add_button)
+    void onAddTaskButtonClicked() {
         this.presenter.onAddTaskButtonClicked();
     }
 }
