@@ -7,8 +7,8 @@ import android.support.v7.widget.RecyclerView;
 
 import com.julienarzul.basemvp.MvpActivity;
 import com.julienarzul.basemvp.sample.R;
-import com.julienarzul.basemvp.sample.datasource.DatasourceFactory;
-import com.julienarzul.basemvp.sample.model.Task;
+import com.julienarzul.basemvp.sample.core.datasources.DatasourceFactory;
+import com.julienarzul.basemvp.sample.core.model.Task;
 import com.julienarzul.basemvp.sample.ui.addEditTask.AddEditTaskActivity;
 import com.julienarzul.basemvp.sample.ui.taskDetails.TaskDetailsActivity;
 

@@ -1,10 +1,10 @@
 package com.julienarzul.basemvp.sample.ui.taskList;
 
 import com.julienarzul.basemvp.BasePresenter;
-import com.julienarzul.basemvp.sample.datasource.DataCallback;
-import com.julienarzul.basemvp.sample.datasource.ITasksDatasource;
-import com.julienarzul.basemvp.sample.model.DatasourceError;
-import com.julienarzul.basemvp.sample.model.Task;
+import com.julienarzul.basemvp.sample.core.datasources.DataCallback;
+import com.julienarzul.basemvp.sample.core.datasources.ITasksDatasource;
+import com.julienarzul.basemvp.sample.core.model.DatasourceError;
+import com.julienarzul.basemvp.sample.core.model.Task;
 
 import java.lang.ref.WeakReference;
 import java.util.List;

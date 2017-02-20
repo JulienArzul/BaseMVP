@@ -1,4 +1,4 @@
-package com.julienarzul.basemvp.sample.model;
+package com.julienarzul.basemvp.sample.core.model;
 
 /**
  * Copyright @ Julien Arzul 2017

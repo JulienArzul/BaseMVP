@@ -1,4 +1,4 @@
-package com.julienarzul.basemvp.sample.datasource;
+package com.julienarzul.basemvp.sample.core.datasources;
 
 /**
  * Copyright @ Julien Arzul 2016

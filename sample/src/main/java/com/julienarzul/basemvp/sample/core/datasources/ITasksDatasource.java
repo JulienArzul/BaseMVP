@@ -1,6 +1,6 @@
-package com.julienarzul.basemvp.sample.datasource;
+package com.julienarzul.basemvp.sample.core.datasources;
 
-import com.julienarzul.basemvp.sample.model.Task;
+import com.julienarzul.basemvp.sample.core.model.Task;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package com.julienarzul.basemvp.sample.ui.taskList;
 
 import com.julienarzul.basemvp.MvpContract;
-import com.julienarzul.basemvp.sample.model.Task;
+import com.julienarzul.basemvp.sample.core.model.Task;
 
 import java.util.List;
 

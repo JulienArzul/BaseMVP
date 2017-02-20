@@ -1,6 +1,6 @@
-package com.julienarzul.basemvp.sample.datasource;
+package com.julienarzul.basemvp.sample.core.datasources;
 
-import com.julienarzul.basemvp.sample.model.DatasourceError;
+import com.julienarzul.basemvp.sample.core.model.DatasourceError;
 
 /**
  * Copyright @ Julien Arzul 2017

@@ -1,7 +1,7 @@
 package com.julienarzul.basemvp.sample.ui.taskDetails;
 
 import com.julienarzul.basemvp.MvpContract;
-import com.julienarzul.basemvp.sample.model.Task;
+import com.julienarzul.basemvp.sample.core.model.Task;
 
 /**
  * Copyright @ Julien Arzul 2017

@@ -8,7 +8,7 @@ import android.support.annotation.Nullable;
 import com.julienarzul.basemvp.MvpActivity;
 import com.julienarzul.basemvp.MvpContract;
 import com.julienarzul.basemvp.sample.R;
-import com.julienarzul.basemvp.sample.model.Task;
+import com.julienarzul.basemvp.sample.core.model.Task;
 
 /**
  * Copyright @ Julien Arzul 2017

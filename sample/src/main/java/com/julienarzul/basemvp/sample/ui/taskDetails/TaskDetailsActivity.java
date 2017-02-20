@@ -8,7 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.julienarzul.basemvp.sample.R;
-import com.julienarzul.basemvp.sample.model.Task;
+import com.julienarzul.basemvp.sample.core.model.Task;
 
 /**
  * Copyright @ Julien Arzul 2017

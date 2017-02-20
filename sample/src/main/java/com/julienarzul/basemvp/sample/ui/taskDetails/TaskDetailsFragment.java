@@ -14,8 +14,8 @@ import android.widget.Toast;
 
 import com.julienarzul.basemvp.MvpFragment;
 import com.julienarzul.basemvp.sample.R;
-import com.julienarzul.basemvp.sample.datasource.DatasourceFactory;
-import com.julienarzul.basemvp.sample.model.Task;
+import com.julienarzul.basemvp.sample.core.datasources.DatasourceFactory;
+import com.julienarzul.basemvp.sample.core.model.Task;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
