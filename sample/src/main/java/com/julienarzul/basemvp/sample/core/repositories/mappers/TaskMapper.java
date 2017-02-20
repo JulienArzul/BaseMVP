@@ -20,26 +20,26 @@ public class TaskMapper {
     private static class RegularMapper implements Mapper<JsonTask, Task> {
 
         @Override
-        public Task map(JsonTask model) {
-            if (model == null) {
+        public Task map(JsonTask source) {
+            if (source == null) {
                 return null;
             }
 
-            return Task.create(model.id, model.description);
+            return Task.create(source.id, source.description);
         }
     }
 
     private static class InverseMapper implements Mapper<Task, JsonTask> {
 
         @Override
-        public JsonTask map(Task model) {
-            if (model == null) {
+        public JsonTask map(Task source) {
+            if (source == null) {
                 return null;
             }
 
             JsonTask jsonTask = new JsonTask();
-            jsonTask.id = model.taskId();
-            jsonTask.description = model.taskDescription();
+            jsonTask.id = source.taskId();
+            jsonTask.description = source.taskDescription();
             return jsonTask;
         }
     }

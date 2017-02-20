@@ -7,5 +7,5 @@ package com.julienarzul.basemvp.sample.core.mappers;
 
 public interface Mapper<SOURCE, RESULT> {
 
-    RESULT map(SOURCE model);
+    RESULT map(SOURCE source);
 }

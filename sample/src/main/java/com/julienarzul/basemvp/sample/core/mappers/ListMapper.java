@@ -19,10 +19,10 @@ public class ListMapper<SOURCE, RESULT> implements Mapper<List<SOURCE>, List<RES
     }
 
     @Override
-    public List<RESULT> map(List<SOURCE> models) {
-        List<RESULT> persistences = new ArrayList<>();
-        if (models != null && models.size() > 0) {
-            for (SOURCE model : models) {
+    public List<RESULT> map(List<SOURCE> source) {
+        List<RESULT> resultList = new ArrayList<>();
+        if (source != null && source.size() > 0) {
+            for (SOURCE model : source) {
                 RESULT mappedObject;
                 try {
                     mappedObject = mapper.map(model);
@@ -34,11 +34,12 @@ public class ListMapper<SOURCE, RESULT> implements Mapper<List<SOURCE>, List<RES
                     }
                     mappedObject = null;
                 }
+
                 if (mappedObject != null) {
-                    persistences.add(mappedObject);
+                    resultList.add(mappedObject);
                 }
             }
         }
-        return persistences;
+        return resultList;
     }
 }
