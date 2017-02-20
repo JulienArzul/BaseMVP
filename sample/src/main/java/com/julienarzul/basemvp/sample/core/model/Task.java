@@ -10,11 +10,15 @@ import com.google.auto.value.AutoValue;
 @AutoValue
 public abstract class Task implements Parcelable {
 
-    public static Task create(int taskId, String taskDescription) {
+    public static Task create(Integer taskId, String taskDescription) {
+        if (taskId == null) {
+            return null;
+        }
+
         return new AutoValue_Task(taskId, taskDescription);
     }
 
-    abstract int taskId();
+    public abstract int taskId();
 
     public abstract String taskDescription();
 }

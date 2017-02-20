@@ -15,13 +15,13 @@ import java.util.List;
  * Copyright @ Julien Arzul 2017
  */
 
-public class FileStorageManager implements IStorageManager {
+public class JsonFileStorageManager {
 
     private static final String STORAGE_DIRECTORY = "storage";
 
     private final Context context;
 
-    public FileStorageManager(Context context) {
+    public JsonFileStorageManager(Context context) {
         this.context = context;
     }
 
@@ -39,7 +39,6 @@ public class FileStorageManager implements IStorageManager {
         return new File(getStorageFileDir(this.context), storageKey + ".json");
     }
 
-    @Override
     public <MODEL, STORAGE> MODEL readObject(String storageKey, Class<STORAGE> storageTypeClass, Mapper<STORAGE, MODEL> mapper) {
         if (TextUtils.isEmpty(storageKey) || storageTypeClass == null || mapper == null) {
             return null;
@@ -51,21 +50,22 @@ public class FileStorageManager implements IStorageManager {
         return mapper.map(storageObject);
     }
 
-    @Override
     public <MODEL, STORAGE> List<MODEL> readObjectList(String storageKey, Class<STORAGE> storageTypeClass, Mapper<STORAGE, MODEL> mapper) {
         if (TextUtils.isEmpty(storageKey) || storageTypeClass == null || mapper == null) {
             return null;
         }
 
         File storageFile = this.getFileForKey(storageKey);
-        List<STORAGE> storageList = FileUtils.readJsonListFile(storageFile, storageTypeClass);
+        if (!storageFile.exists()) {
+            return null;
+        }
 
+        List<STORAGE> storageList = FileUtils.readJsonListFile(storageFile, storageTypeClass);
         ListMapper<STORAGE, MODEL> listMapper = new ListMapper<>(mapper);
 
         return listMapper.map(storageList);
     }
 
-    @Override
     public <MODEL, STORAGE> void writeObject(String storageKey, MODEL object, Class<STORAGE> storageTypeClass, Mapper<MODEL, STORAGE> mapper) {
         if (TextUtils.isEmpty(storageKey) || storageTypeClass == null || mapper == null) {
             return;
@@ -81,7 +81,6 @@ public class FileStorageManager implements IStorageManager {
         }
     }
 
-    @Override
     public <MODEL, STORAGE> void writeObjectList(String storageKey, List<MODEL> objectList, Class<STORAGE> storageTypeClass, Mapper<MODEL, STORAGE> mapper) {
         if (TextUtils.isEmpty(storageKey) || storageTypeClass == null || mapper == null) {
             return;
