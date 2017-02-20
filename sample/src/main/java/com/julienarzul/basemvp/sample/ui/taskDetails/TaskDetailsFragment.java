@@ -1,4 +1,4 @@
-package com.julienarzul.basemvp.sample.taskDetails;
+package com.julienarzul.basemvp.sample.ui.taskDetails;
 
 import android.app.Dialog;
 import android.os.Bundle;
@@ -23,7 +23,7 @@ import com.julienarzul.basemvp.sample.model.Task;
 
 public class TaskDetailsFragment extends MvpFragment<TaskDetailsContract.Presenter> implements TaskDetailsContract.View {
 
-    private static final String TASK_BUNDLE_KEY = "com.julienarzul.basemvp.sample.taskDetails.TaskDetailsFragment.task";
+    private static final String TASK_BUNDLE_KEY = "com.julienarzul.basemvp.sample.ui.taskDetails.TaskDetailsFragment.task";
     private TextView taskDescriptionTextView;
 
     public static TaskDetailsFragment newInstance(Task task) {

@@ -1,4 +1,4 @@
-package com.julienarzul.basemvp.sample.taskList;
+package com.julienarzul.basemvp.sample.ui.taskList;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,7 +9,7 @@ import com.julienarzul.basemvp.MvpActivity;
 import com.julienarzul.basemvp.sample.R;
 import com.julienarzul.basemvp.sample.datasource.DatasourceFactory;
 import com.julienarzul.basemvp.sample.model.Task;
-import com.julienarzul.basemvp.sample.taskDetails.TaskDetailsActivity;
+import com.julienarzul.basemvp.sample.ui.taskDetails.TaskDetailsActivity;
 
 import java.util.List;
 

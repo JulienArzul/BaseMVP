@@ -1,4 +1,4 @@
-package com.julienarzul.basemvp.sample.taskDetails;
+package com.julienarzul.basemvp.sample.ui.taskDetails;
 
 import android.content.Context;
 import android.content.Intent;
@@ -16,7 +16,7 @@ import com.julienarzul.basemvp.sample.model.Task;
 
 public class TaskDetailsActivity extends AppCompatActivity {
 
-    private static final String TASK_EXTRA_KEY = "com.julienarzul.basemvp.sample.taskDetails.TaskDetailsActivity.task";
+    private static final String TASK_EXTRA_KEY = "com.julienarzul.basemvp.sample.ui.taskDetails.TaskDetailsActivity.task";
 
     public static Intent getStartingIntent(Context context, @NonNull Task task) {
         Intent intent = new Intent(context, TaskDetailsActivity.class);

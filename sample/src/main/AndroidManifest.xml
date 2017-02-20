@@ -8,7 +8,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".taskList.TaskListActivity">
+        <activity android:name=".ui.taskList.TaskListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -16,7 +16,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".taskDetails.TaskDetailsActivity">
+        <activity android:name=".ui.taskDetails.TaskDetailsActivity">
         </activity>
 
     </application>

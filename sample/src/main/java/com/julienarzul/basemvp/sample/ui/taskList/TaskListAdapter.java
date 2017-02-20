@@ -1,4 +1,4 @@
-package com.julienarzul.basemvp.sample.taskList;
+package com.julienarzul.basemvp.sample.ui.taskList;
 
 import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;

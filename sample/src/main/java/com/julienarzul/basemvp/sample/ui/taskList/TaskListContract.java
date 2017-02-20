@@ -1,4 +1,4 @@
-package com.julienarzul.basemvp.sample.taskList;
+package com.julienarzul.basemvp.sample.ui.taskList;
 
 import com.julienarzul.basemvp.MvpContract;
 import com.julienarzul.basemvp.sample.model.Task;
