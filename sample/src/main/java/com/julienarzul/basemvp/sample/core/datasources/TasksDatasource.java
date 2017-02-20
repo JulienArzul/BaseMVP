@@ -1,7 +1,10 @@
 package com.julienarzul.basemvp.sample.core.datasources;
 
+import android.support.annotation.NonNull;
+
 import com.julienarzul.basemvp.sample.core.model.DatasourceError;
 import com.julienarzul.basemvp.sample.core.model.Task;
+import com.julienarzul.basemvp.sample.core.repositories.storage.IStorageRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,26 +15,25 @@ import java.util.List;
 
 class TasksDatasource implements ITasksDatasource {
 
-    private static volatile TasksDatasource instance;
+    private final IStorageRepository storageManager;
 
     private final List<Task> taskList;
 
-    private TasksDatasource() {
-        this.taskList = new ArrayList<>(createTaskList());
-    }
+    TasksDatasource(IStorageRepository storageManager) {
+        this.storageManager = storageManager;
 
-    static TasksDatasource getInstance() {
-        if (instance == null) {
-            synchronized (TasksDatasource.class) {
-                if (instance == null) {
-                    instance = new TasksDatasource();
-                }
-            }
+        this.taskList = new ArrayList<>();
+        List<Task> storedTaskList = this.storageManager.getTaskList();
+
+        if (storedTaskList == null) {
+            storedTaskList = createTaskList();
+            this.updateTaskListStored();
         }
 
-        return instance;
+        this.taskList.addAll(storedTaskList);
     }
 
+    @NonNull
     private static List<Task> createTaskList() {
         List<Task> taskList = new ArrayList<>();
 
@@ -53,8 +55,13 @@ class TasksDatasource implements ITasksDatasource {
 
         if (removed) {
             callback.onDataLoaded(null);
+            this.updateTaskListStored();
         } else {
             callback.onDataError(new DatasourceError());
         }
+    }
+
+    private void updateTaskListStored() {
+        this.storageManager.updateTaskList(this.taskList);
     }
 }

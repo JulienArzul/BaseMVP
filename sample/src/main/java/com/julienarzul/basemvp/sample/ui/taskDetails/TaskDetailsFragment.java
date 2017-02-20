@@ -44,7 +44,7 @@ public class TaskDetailsFragment extends MvpFragment<TaskDetailsContract.Present
 
     @Override
     protected TaskDetailsContract.Presenter createPresenter() {
-        return new TaskDetailsPresenter(DatasourceFactory.tasksDatasource());
+        return new TaskDetailsPresenter(DatasourceFactory.tasksDatasource(this.getContext()));
     }
 
     @Override

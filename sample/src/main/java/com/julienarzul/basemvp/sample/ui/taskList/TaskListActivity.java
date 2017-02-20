@@ -27,7 +27,7 @@ public class TaskListActivity extends MvpActivity<TaskListContract.Presenter> im
 
     @Override
     protected TaskListContract.Presenter createPresenter() {
-        return new TaskListPresenter(DatasourceFactory.tasksDatasource());
+        return new TaskListPresenter(DatasourceFactory.tasksDatasource(this.getApplicationContext()));
     }
 
     @Override
