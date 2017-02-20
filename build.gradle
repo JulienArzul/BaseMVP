@@ -28,9 +28,11 @@ ext {
     // Google Versions
     supportVersion = "25.1.1"
     autoValueVersion = "1.2"
+    gsonVersion = "2.8.0"
 
     // Square versions
     butterknifeVersion = "8.5.1"
+    timberVersion = "4.5.1"
 
     // Other Versions
     autoParcelVersion = "1.0.3"

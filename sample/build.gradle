@@ -36,8 +36,12 @@ dependencies {
     annotationProcessor "com.google.auto.value:auto-value:$rootProject.ext.autoValueVersion"
     annotationProcessor "frankiesardo:auto-parcel:$rootProject.ext.autoParcelVersion"
 
+    compile "com.google.code.gson:gson:$rootProject.ext.gsonVersion"
+
     compile "com.jakewharton:butterknife:$rootProject.ext.butterknifeVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.ext.butterknifeVersion"
+
+    compile "com.jakewharton.timber:timber:$rootProject.ext.timberVersion"
 
     testCompile "junit:junit:$rootProject.ext.junitVersion"
     androidTestCompile("com.android.support.test.espresso:espresso-core:$rootProject.ext.espressoVersion", {
