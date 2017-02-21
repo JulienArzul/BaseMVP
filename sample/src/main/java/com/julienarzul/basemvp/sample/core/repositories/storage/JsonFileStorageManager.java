@@ -1,11 +1,11 @@
 package com.julienarzul.basemvp.sample.core.repositories.storage;
 
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
 
 import com.julienarzul.basemvp.sample.core.mappers.ListMapper;
 import com.julienarzul.basemvp.sample.core.mappers.Mapper;
 import com.julienarzul.basemvp.sample.core.utils.FileUtils;
+import com.julienarzul.basemvp.sample.core.utils.TextUtils;
 
 import java.io.File;
 import java.util.List;
@@ -45,10 +45,6 @@ public class JsonFileStorageManager {
         }
 
         File storageFile = this.getFileForKey(storageKey);
-        if (!storageFile.exists()) {
-            return null;
-        }
-
         List<STORAGE> storageList = FileUtils.readJsonListFile(storageFile, storageTypeClass);
         ListMapper<STORAGE, MODEL> listMapper = new ListMapper<>(mapper);
 
