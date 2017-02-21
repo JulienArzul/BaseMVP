@@ -23,6 +23,14 @@ class TasksDatasource implements ITasksDatasource {
     }
 
     @Override
+    public void addTask(Task task, DataCallback<Void> callback) {
+        this.taskList.add(task);
+        this.updateTaskListStored();
+
+        callback.onDataLoaded(null);
+    }
+
+    @Override
     public void getTaskList(DataCallback<List<Task>> callback) {
         callback.onDataLoaded(this.taskList);
     }

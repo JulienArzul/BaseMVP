@@ -10,6 +10,8 @@ import java.util.List;
 
 public interface ITasksDatasource {
 
+    void addTask(Task task, DataCallback<Void> callback);
+
     void getTaskList(DataCallback<List<Task>> callback);
 
     void deleteTask(Task task, DataCallback<Void> callback);

@@ -55,6 +55,31 @@ public class TaskDatasourceTest {
     }
 
     @Test
+    public void testAddTask() {
+        DataCallback<Void> mockCallback = Mockito.mock(DataCallback.class);
+
+        Task addedTask = Task.create(9999, "Added Task");
+        this.testedTaskDatasource.addTask(addedTask, mockCallback);
+
+        Mockito.verify(mockCallback).onDataLoaded(null);
+
+        // Retrieves the new list of task to test its new value
+        DataCallback<List<Task>> mockGetListCallback = Mockito.mock(DataCallback.class);
+        this.testedTaskDatasource.getTaskList(mockGetListCallback);
+
+        ArgumentCaptor<List<Task>> taskListCaptor = ArgumentCaptor.forClass(List.class);
+        Mockito.verify(mockGetListCallback).onDataLoaded(taskListCaptor.capture());
+        List<Task> refreshedTaskList = taskListCaptor.getValue();
+
+        // New list must have one less element and not contain the task we just deleted
+        Assert.assertEquals(this.initialTaskList.size() + 1, refreshedTaskList.size());
+        Assert.assertTrue(refreshedTaskList.contains(addedTask));
+
+        // Checks that task list has been persisted
+        Assert.assertEquals(refreshedTaskList, this.storageManager.getTaskList());
+    }
+
+    @Test
     public void testGetTaskListSuccess() throws Exception {
         DataCallback<List<Task>> mockCallback = Mockito.mock(DataCallback.class);
 
@@ -84,6 +109,9 @@ public class TaskDatasourceTest {
         // New list must have one less element and not contain the task we just deleted
         Assert.assertEquals(initialTaskListSize - 1, refreshedTaskList.size());
         Assert.assertFalse(refreshedTaskList.contains(deletedTask));
+
+        // Checks that task list has been persisted
+        Assert.assertEquals(refreshedTaskList, this.storageManager.getTaskList());
     }
 
     @Test
