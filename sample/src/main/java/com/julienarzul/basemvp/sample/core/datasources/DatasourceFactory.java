@@ -19,7 +19,7 @@ public class DatasourceFactory {
     public static ITasksDatasource tasksDatasource(Context context) {
         if (tasksDatasource == null) {
             synchronized (TasksDatasource.class) {
-                tasksDatasource = new TasksDatasource(new FileStorageRepository(new JsonFileStorageManager(context)));
+                tasksDatasource = new TasksDatasource(new FileStorageRepository(new JsonFileStorageManager(context.getFilesDir())));
             }
         }
 

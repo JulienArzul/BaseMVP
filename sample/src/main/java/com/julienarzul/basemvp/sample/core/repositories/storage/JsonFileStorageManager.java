@@ -1,6 +1,5 @@
 package com.julienarzul.basemvp.sample.core.repositories.storage;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
@@ -17,26 +16,16 @@ import java.util.List;
 
 public class JsonFileStorageManager {
 
-    private static final String STORAGE_DIRECTORY = "storage";
+    private static final String STORAGE_SUBDIRECTORY = "storage";
 
-    private final Context context;
+    private final File storageFileDir;
 
-    public JsonFileStorageManager(Context context) {
-        this.context = context;
-    }
+    public JsonFileStorageManager(File storageFileDirectory) {
+        this.storageFileDir = new File(storageFileDirectory, STORAGE_SUBDIRECTORY);
 
-    @NonNull
-    private static File getStorageFileDir(Context context) {
-        File mediasDir = new File(context.getFilesDir(), STORAGE_DIRECTORY);
-        if (!mediasDir.exists()) {
-            mediasDir.mkdir();
+        if (!this.storageFileDir.exists()) {
+            this.storageFileDir.mkdir();
         }
-        return mediasDir;
-    }
-
-    @NonNull
-    private File getFileForKey(String storageKey) {
-        return new File(getStorageFileDir(this.context), storageKey + ".json");
     }
 
     public <MODEL, STORAGE> MODEL readObject(String storageKey, Class<STORAGE> storageTypeClass, Mapper<STORAGE, MODEL> mapper) {
@@ -96,5 +85,10 @@ public class JsonFileStorageManager {
 
             FileUtils.writeJsonListFile(storageFile, storageTypeClass, storageList);
         }
+    }
+
+    @NonNull
+    private File getFileForKey(String storageKey) {
+        return new File(this.storageFileDir, storageKey + ".json");
     }
 }
