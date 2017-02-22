@@ -2,6 +2,47 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
+              android:layout_marginBottom="@dimen/default_vertical_margin"
+              android:layout_marginEnd="@dimen/default_horizontal_margin"
+              android:layout_marginStart="@dimen/default_horizontal_margin"
+              android:layout_marginTop="@dimen/default_vertical_margin"
               android:orientation="vertical">
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/add_edit_task_id_textinputlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/add_edit_task_id_hint">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/add_edit_task_description_textinputlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:hint="@string/add_edit_task_description_hint">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:lines="1"
+            android:maxLines="1"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/add_edit_task_confirm_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:text="@string/add_edit_task_add_task_button_text"/>
 
 </LinearLayout>

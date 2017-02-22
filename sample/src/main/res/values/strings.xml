@@ -7,4 +7,9 @@
     <string name="task_details_delete_error_dialog_title_text">Erreur</string>
     <string name="task_details_delete_error_dialog_message_text">Impossible to delete the task</string>
 
+    <string name="add_edit_task_id_hint">Task ID</string>
+    <string name="add_edit_task_description_hint">Task Description</string>
+    <string name="add_edit_task_add_task_button_text">Create Task</string>
+    <string name="add_edit_task_update_task_button_text">Update Task</string>
+
 </resources>
