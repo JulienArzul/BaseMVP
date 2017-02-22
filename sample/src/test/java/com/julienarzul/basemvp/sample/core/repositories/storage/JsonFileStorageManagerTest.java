@@ -38,6 +38,16 @@ public class JsonFileStorageManagerTest {
     }
 
     @Test
+    public void testReadNullObject() throws Exception {
+        String testObjectKey = "TEST_OBJECT_KEY";
+        Class<TestJson> testStorageClass = TestJson.class;
+
+        // Checks that there is no object stored at initialization
+        TestModel initialObject = this.testedJsonFileStorageManager.readObject(testObjectKey, testStorageClass, TestMapper.regularMapper());
+        Assert.assertNull(initialObject);
+    }
+
+    @Test
     public void testReadWriteObject() throws Exception {
         TestModel objectTestModel = TestModel.create(0, "0");
 
@@ -49,6 +59,16 @@ public class JsonFileStorageManagerTest {
         TestModel readObject = this.testedJsonFileStorageManager.readObject(testObjectKey, testStorageClass, TestMapper.regularMapper());
 
         Assert.assertEquals(objectTestModel, readObject);
+    }
+
+    @Test
+    public void testReadEmptyList() throws Exception {
+        String testListKey = "TEST_LIST_KEY";
+        Class<TestJson> testStorageClass = TestJson.class;
+
+        // Checks that there is no list stored at initialization
+        List<TestModel> initialList = this.testedJsonFileStorageManager.readObjectList(testListKey, testStorageClass, TestMapper.regularMapper());
+        Assert.assertEquals(new ArrayList<>(), initialList);
     }
 
     @Test
