@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.julienarzul.basemvp.MvpActivity;
 import com.julienarzul.basemvp.sample.R;
+import com.julienarzul.basemvp.sample.ui.eventList.EventListActivity;
 
 public class MainActivity extends MvpActivity<MainContract.Presenter> implements MainContract.View {
 
@@ -35,7 +36,7 @@ public class MainActivity extends MvpActivity<MainContract.Presenter> implements
 
     @Override
     public void launchActivityBasedScreen() {
-        // TODO
+        this.startActivity(EventListActivity.getStartingIntent(this.getApplicationContext()));
     }
 
     @Override
