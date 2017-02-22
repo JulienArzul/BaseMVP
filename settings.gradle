@@ -1,1 +1,1 @@
-include ':sample', ':basemvp'
+include ':basemvp', ':sample'

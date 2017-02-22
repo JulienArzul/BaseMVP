@@ -8,10 +8,11 @@ android {
         applicationId "com.julienarzul.basemvp.sample"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-
         versionCode 1
         versionName "1.0"
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
     }
     buildTypes {
         release {
@@ -21,31 +22,12 @@ android {
     }
 }
 
-repositories {
-    // Repository for AutoParcel
-    maven { url "https://clojars.org/repo/" }
-}
-
 dependencies {
-    compile project(':basemvp')
+    compile project(":basemvp")
 
     compile "com.android.support:appcompat-v7:$rootProject.ext.supportVersion"
-    compile "com.android.support:design:$rootProject.ext.supportVersion"
-
-    provided "com.google.auto.value:auto-value:$rootProject.ext.autoValueVersion"
-    annotationProcessor "com.google.auto.value:auto-value:$rootProject.ext.autoValueVersion"
-    annotationProcessor "frankiesardo:auto-parcel:$rootProject.ext.autoParcelVersion"
-
-    compile "com.google.code.gson:gson:$rootProject.ext.gsonVersion"
-
-    compile "com.jakewharton:butterknife:$rootProject.ext.butterknifeVersion"
-    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.ext.butterknifeVersion"
-
-    compile "com.jakewharton.timber:timber:$rootProject.ext.timberVersion"
 
     testCompile "junit:junit:$rootProject.ext.junitVersion"
-    testCompile "org.mockito:mockito-core:$rootProject.ext.mockitoVersion"
-    testCompile "com.google.guava:guava:$rootProject.ext.guavaVersion"
     androidTestCompile("com.android.support.test.espresso:espresso-core:$rootProject.ext.espressoVersion", {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
