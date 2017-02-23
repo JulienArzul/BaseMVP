@@ -10,4 +10,6 @@ import java.util.List;
 public interface IEventDatasource {
 
     void getEventList(DataCallback<List<Event>> callback);
+
+    void getEventDetails(int eventId, DataCallback<Event> callback);
 }

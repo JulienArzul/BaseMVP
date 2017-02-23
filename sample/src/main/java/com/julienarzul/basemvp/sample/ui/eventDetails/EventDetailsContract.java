@@ -10,9 +10,13 @@ interface EventDetailsContract {
 
     interface View extends MvpContract.View {
 
+        void setEventNameText(String eventNameText);
+
+        void setEventDateText(String eventDateText);
     }
 
     interface Presenter extends MvpContract.Presenter<View> {
 
+        void loadEvent(int eventId);
     }
 }

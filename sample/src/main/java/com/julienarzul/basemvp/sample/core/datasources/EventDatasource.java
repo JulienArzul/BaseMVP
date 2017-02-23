@@ -4,6 +4,7 @@ import com.julienarzul.basemvp.sample.core.model.Event;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -27,5 +28,11 @@ public class EventDatasource implements IEventDatasource {
     @Override
     public void getEventList(DataCallback<List<Event>> callback) {
         new WaitAsyncTask<>(callback, createEventList()).execute(2);
+    }
+
+    @Override
+    public void getEventDetails(int eventId, DataCallback<Event> callback) {
+        new WaitAsyncTask<>(callback, Event.create("Event with id " + eventId, new Date()))
+                .execute(1);
     }
 }
