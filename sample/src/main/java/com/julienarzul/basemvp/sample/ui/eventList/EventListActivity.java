@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -21,6 +22,7 @@ import java.util.List;
 public class EventListActivity extends MvpActivity<EventListContract.Presenter> implements EventListContract.View {
 
     private EventListAdapter adapter;
+    private RecyclerView recyclerView;
 
     public static Intent getStartingIntent(Context context) {
         return new Intent(context, EventListActivity.class);
@@ -39,7 +41,7 @@ public class EventListActivity extends MvpActivity<EventListContract.Presenter> 
 
         this.adapter = new EventListAdapter(this.presenter);
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.event_list_recyclerview);
+        recyclerView = (RecyclerView) findViewById(R.id.event_list_recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getApplicationContext(), LinearLayoutManager.VERTICAL, false));
         recyclerView.setAdapter(this.adapter);
 
@@ -49,5 +51,11 @@ public class EventListActivity extends MvpActivity<EventListContract.Presenter> 
     @Override
     public void setEventList(List<Event> eventList) {
         this.adapter.setItemList(eventList);
+    }
+
+    @Override
+    public void displayEventClickedSnackbar(Event event) {
+        Snackbar.make(this.recyclerView, String.format("%s clicked", event.eventName()), Snackbar.LENGTH_SHORT)
+                .show();
     }
 }

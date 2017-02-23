@@ -14,10 +14,14 @@ interface EventListContract {
     interface View extends MvpContract.View {
 
         void setEventList(List<Event> eventList);
+
+        void displayEventClickedSnackbar(Event event);
     }
 
     interface Presenter extends MvpContract.Presenter<View> {
 
         void loadData();
+
+        void onEventClicked(Event event);
     }
 }

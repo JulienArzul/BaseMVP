@@ -14,12 +14,12 @@ import com.julienarzul.basemvp.sample.core.model.Event;
 /**
  * Copyright @ Julien Arzul 2017
  */
-class EventListItemViewHolder extends RecyclerView.ViewHolder {
+class EventListItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     private final EventListContract.Presenter presenter;
-
     private final TextView eventNameTextView;
     private final TextView eventDateTextView;
+    private Event currentItem;
 
     private EventListItemViewHolder(View itemView, EventListContract.Presenter presenter) {
         super(itemView);
@@ -28,6 +28,8 @@ class EventListItemViewHolder extends RecyclerView.ViewHolder {
 
         this.eventNameTextView = (TextView) itemView.findViewById(R.id.event_name_textview);
         this.eventDateTextView = (TextView) itemView.findViewById(R.id.event_date_textview);
+
+        this.itemView.setOnClickListener(this);
     }
 
     static EventListItemViewHolder newInstance(Context context, ViewGroup parent, EventListContract.Presenter presenter) {
@@ -37,9 +39,20 @@ class EventListItemViewHolder extends RecyclerView.ViewHolder {
     }
 
     void bindView(Event item) {
+        this.currentItem = item;
+
         Context context = this.itemView.getContext();
 
         this.eventNameTextView.setText(item.eventName());
         this.eventDateTextView.setText(DateFormat.getDateFormat(context).format(item.eventDate()));
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v == this.itemView) {
+            if (this.currentItem != null) {
+                this.presenter.onEventClicked(this.currentItem);
+            }
+        }
     }
 }

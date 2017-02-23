@@ -26,6 +26,11 @@ class EventListPresenter extends BasePresenter<EventListContract.View> implement
         this.eventDatasource.getEventList(new GetEventListDataCallback(this));
     }
 
+    @Override
+    public void onEventClicked(Event event) {
+        this.view.displayEventClickedSnackbar(event);
+    }
+
     private void onGetEventListSucceeded(List<Event> eventList) {
         if (this.view != null) {
             this.view.setEventList(eventList);
