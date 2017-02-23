@@ -5,7 +5,9 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.2'
+        classpath 'com.android.tools.build:gradle:2.2.3'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.4'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -16,6 +18,32 @@ allprojects {
     repositories {
         jcenter()
     }
+}
+
+ext {
+    // Build tools
+    compileSdkVersion = 25
+    buildToolsVersion = "25.0.2"
+    minSdkVersion = 17
+    targetSdkVersion = 25
+
+    // Google Versions
+    supportVersion = "25.2.0"
+    autoValueVersion = "1.2"
+    gsonVersion = "2.8.0"
+
+    // Square versions
+    butterknifeVersion = "8.5.1"
+    timberVersion = "4.5.1"
+
+    // Other Versions
+    autoParcelVersion = "1.0.3"
+
+    // Tests Libs versions
+    junitVersion = "4.12"
+    mockitoVersion = "2.7.10"
+    espressoVersion = "2.2.2"
+    guavaVersion = "21.0"
 }
 
 task clean(type: Delete) {

@@ -1,0 +1,23 @@
+ext {
+    bintrayRepo = 'AndroidLibraries'
+    bintrayName = 'BaseMVP'
+
+    publishedGroupId = 'com.julienarzul'
+    libraryName = 'BaseMVP'
+    artifact = 'basemvp'
+
+    libraryDescription = 'Android implementation of MVP (Model-View-Presenter)'
+
+    siteUrl = 'https://github.com/JulienArzul/BaseMVP'
+    gitUrl = 'https://github.com/JulienArzul/BaseMVP.git'
+
+    libraryVersion = '1.0.0'
+
+    developerId = 'JulienArzul'
+    developerName = 'Julien Arzul'
+    developerEmail = 'julien.arzul@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
