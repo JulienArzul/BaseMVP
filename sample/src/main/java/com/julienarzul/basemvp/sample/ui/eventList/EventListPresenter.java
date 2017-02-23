@@ -23,6 +23,9 @@ class EventListPresenter extends BasePresenter<EventListContract.View> implement
 
     @Override
     public void loadData() {
+        this.view.setProgressBarVisible(true);
+        this.view.setRecyclerViewVisible(false);
+
         this.eventDatasource.getEventList(new GetEventListDataCallback(this));
     }
 
@@ -33,13 +36,18 @@ class EventListPresenter extends BasePresenter<EventListContract.View> implement
 
     private void onGetEventListSucceeded(List<Event> eventList) {
         if (this.view != null) {
+            this.view.setProgressBarVisible(false);
+            this.view.setRecyclerViewVisible(true);
+
             this.view.setEventList(eventList);
         }
     }
 
     private void onGetEventListFailed(DatasourceError error) {
         if (this.view != null) {
-            // TODO
+            this.view.setProgressBarVisible(false);
+
+            // TODO: Show error view
         }
     }
 

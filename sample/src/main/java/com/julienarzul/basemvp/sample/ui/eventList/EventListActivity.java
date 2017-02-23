@@ -7,6 +7,8 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.julienarzul.basemvp.MvpActivity;
 import com.julienarzul.basemvp.sample.DatasourceFactory;
@@ -22,6 +24,8 @@ import java.util.List;
 public class EventListActivity extends MvpActivity<EventListContract.Presenter> implements EventListContract.View {
 
     private EventListAdapter adapter;
+
+    private ProgressBar progressBar;
     private RecyclerView recyclerView;
 
     public static Intent getStartingIntent(Context context) {
@@ -42,6 +46,8 @@ public class EventListActivity extends MvpActivity<EventListContract.Presenter> 
         this.adapter = new EventListAdapter(this.presenter);
 
         recyclerView = (RecyclerView) findViewById(R.id.event_list_recyclerview);
+        progressBar = (ProgressBar) findViewById(R.id.event_list_progressbar);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getApplicationContext(), LinearLayoutManager.VERTICAL, false));
         recyclerView.setAdapter(this.adapter);
 
@@ -57,5 +63,15 @@ public class EventListActivity extends MvpActivity<EventListContract.Presenter> 
     public void displayEventClickedSnackbar(Event event) {
         Snackbar.make(this.recyclerView, String.format("%s clicked", event.eventName()), Snackbar.LENGTH_SHORT)
                 .show();
+    }
+
+    @Override
+    public void setProgressBarVisible(boolean visible) {
+        this.progressBar.setVisibility(visible ? View.VISIBLE : View.GONE);
+    }
+
+    @Override
+    public void setRecyclerViewVisible(boolean visible) {
+        this.recyclerView.setVisibility(visible ? View.VISIBLE : View.GONE);
     }
 }

@@ -16,6 +16,10 @@ interface EventListContract {
         void setEventList(List<Event> eventList);
 
         void displayEventClickedSnackbar(Event event);
+
+        void setProgressBarVisible(boolean visible);
+
+        void setRecyclerViewVisible(boolean visible);
     }
 
     interface Presenter extends MvpContract.Presenter<View> {
