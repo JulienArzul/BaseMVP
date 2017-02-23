@@ -17,6 +17,7 @@
         </activity>
 
         <activity android:name=".ui.eventList.EventListActivity"/>
+        <activity android:name=".ui.eventDetails.EventDetailsActivity"/>
     </application>
 
 </manifest>
