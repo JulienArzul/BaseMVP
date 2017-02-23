@@ -26,6 +26,6 @@ public class EventDatasource implements IEventDatasource {
 
     @Override
     public void getEventList(DataCallback<List<Event>> callback) {
-        new WaitAsyncTask<>(callback, createEventList()).execute(3);
+        new WaitAsyncTask<>(callback, createEventList()).execute(2);
     }
 }
