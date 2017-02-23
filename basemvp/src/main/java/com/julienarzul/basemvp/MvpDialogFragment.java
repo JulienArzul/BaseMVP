@@ -6,13 +6,25 @@ import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 
 /**
+ * Base class to extend if you're creating a DialogFragment as a View.
+ *
+ * It takes care of storing the view's presenter and handling fragment's lifecycle to attach or detach the view from the presenter.
+ *
  * Copyright @ Julien Arzul 2016
  */
 
 public abstract class MvpDialogFragment<T extends MvpContract.Presenter> extends DialogFragment implements MvpContract.View {
 
+    /**
+     * The Presenter attached to this View
+     */
     protected T presenter;
 
+    /**
+     * Must be overriden to define the Presenter used by this fragment.
+     *
+     * @return The presenter that will be used by this View.
+     */
     protected abstract T createPresenter();
 
     @Override
