@@ -17,17 +17,34 @@ class EventDetailsPresenter extends BasePresenter<EventDetailsContract.View> imp
 
     private final IEventDatasource eventDatasource;
 
+    private Event event;
+
     EventDetailsPresenter(IEventDatasource eventDatasource) {
         this.eventDatasource = eventDatasource;
     }
 
     @Override
     public void loadEvent(int eventId) {
+        this.view.setProgressBarVisible(true);
+        this.view.setContentViewVisible(false);
+
         this.eventDatasource.getEventDetails(eventId, new GetEventDetailsDataCallback(this));
     }
 
+    @Override
+    public void onUpdateButtonClicked() {
+        if (this.event != null) {
+            this.view.displayUpdateEventClickedSnackbar(this.event);
+        }
+    }
+
     private void onGetEventDetailsSucceeded(Event event) {
+        this.event = event;
+
         if (this.view != null) {
+            this.view.setProgressBarVisible(false);
+            this.view.setContentViewVisible(true);
+
             this.view.setEventNameText(event.eventName());
             this.view.setEventDateText(DateFormat.getDateInstance().format(event.eventDate()));
         }
@@ -35,6 +52,8 @@ class EventDetailsPresenter extends BasePresenter<EventDetailsContract.View> imp
 
     private void onGetEventDetailsFailed(DatasourceError error) {
         if (this.view != null) {
+            this.view.setProgressBarVisible(false);
+
             // TODO
         }
     }

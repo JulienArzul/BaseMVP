@@ -37,7 +37,7 @@ public class EventDetailsActivity extends AppCompatActivity {
 
             this.getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.event_details_content_container,
+                    .replace(R.id.event_details_fragment_container,
                             EventDetailsFragment.newInstance(this.getIntent().getIntExtra(EVENT_ID_EXTRA_KEY, -1)))
                     .commit();
         }
